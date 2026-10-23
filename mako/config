@@ -1,0 +1,29 @@
+# SRD Monochrome — mako notifications
+# Black, #e6e6e6 text, white square frame; critical alerts in reverse video, low ones dimmed.
+font=monospace 7
+width=220
+height=70
+margin=6
+padding=6,8
+border-size=1
+border-radius=0
+max-icon-size=24
+
+background-color=#000000f2
+text-color=#e6e6e6
+border-color=#e6e6e6
+progress-color=over #3a3a3a
+
+default-timeout=4000
+max-visible=3
+
+[urgency=low]
+text-color=#bcbcbc
+border-color=#3a3a3a
+
+[urgency=critical]
+background-color=#e6e6e6
+text-color=#000000
+border-color=#ffffff
+border-size=2
+default-timeout=0

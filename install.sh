@@ -5,6 +5,9 @@
 #   ./install.sh kitty                 kitty theme (adds an include line to kitty.conf)
 #   ./install.sh launcher              hyprtoolkit.conf (hyprlauncher) + greyscale SRD-Mono icons
 #   ./install.sh yazi                  yazi file manager theme (theme.toml)
+#   ./install.sh waybar                Waybar style.css (replaces it; re-add your own blocks)
+#   ./install.sh mako                  mako notification config
+#   ./install.sh fish                  fish colours and prompt in conf.d/
 #   ./install.sh obsidian <vault>      the Obsidian theme into <vault>/.obsidian/themes/
 #   ./install.sh all <vault>           all of the above
 set -euo pipefail
@@ -41,6 +44,32 @@ install_yazi() {
     echo "yazi: done (restart yazi)"
 }
 
+install_waybar() {
+    mkdir -p "$config/waybar"
+    backup "$config/waybar/style.css"
+    cp "$here/waybar/style.css" "$config/waybar/style.css"
+    pkill -SIGUSR2 -x waybar || true
+    echo "waybar: done (reloaded if running)"
+}
+
+install_mako() {
+    mkdir -p "$config/mako"
+    backup "$config/mako/config"
+    cp "$here/mako/config" "$config/mako/config"
+    makoctl reload 2>/dev/null || true
+    echo "mako: done"
+}
+
+install_fish() {
+    mkdir -p "$config/fish/conf.d"
+    backup "$config/fish/conf.d/srd-monochrome.fish"
+    cp "$here/fish/srd-monochrome.fish" "$config/fish/conf.d/"
+    if grep -qE '^\s*(set .*fish_(pager_)?color_|function fish_prompt)' "$config/fish/config.fish" 2>/dev/null; then
+        echo "fish: note: config.fish sets colours or a prompt; it runs after conf.d, so remove those lines"
+    fi
+    echo "fish: done (open a new shell)"
+}
+
 install_obsidian() {
     local vault=${1:?usage: ./install.sh obsidian <vault>}
     [ -d "$vault/.obsidian" ] || { echo "$vault is not an Obsidian vault" >&2; exit 1; }
@@ -62,7 +91,10 @@ case ${1:-} in
     kitty) install_kitty ;;
     launcher) install_launcher ;;
     yazi) install_yazi ;;
+    waybar) install_waybar ;;
+    mako) install_mako ;;
+    fish) install_fish ;;
     obsidian) install_obsidian "${2:-}" ;;
-    all) install_kitty; install_launcher; install_yazi; install_obsidian "${2:-}" ;;
-    *) sed -n '2,9p' "$0"; exit 2 ;;
+    all) install_kitty; install_launcher; install_yazi; install_waybar; install_mako; install_fish; install_obsidian "${2:-}" ;;
+    *) sed -n '2,12p' "$0"; exit 2 ;;
 esac

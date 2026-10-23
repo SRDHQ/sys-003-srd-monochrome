@@ -1,0 +1,78 @@
+/* SRD Monochrome — Waybar
+   Black bar, #e6e6e6 text, the kitty greys, no hue. The focused workspace is in reverse video,
+   as in the SWITCHBOARD console; states differ by weight and grey level. */
+
+* {
+  font-family: monospace;
+  font-size: 6px;
+  border-radius: 0;
+}
+
+window#waybar {
+  background: #000000;
+  color: #e6e6e6;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+#workspaces,
+#network,
+#cpu,
+#memory,
+#battery,
+#clock,
+#wireplumber {
+  padding: 0 8px;
+}
+
+#workspaces button {
+  padding: 0 4px;
+  color: #8a8a8a;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#workspaces button.active {
+  color: #000000;
+  background: #e6e6e6;
+}
+
+#workspaces button.urgent {
+  color: #ffffff;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#workspaces button:hover {
+  color: #ffffff;
+  background: #3a3a3a;
+}
+
+#network.disconnected,
+#wireplumber.muted {
+  color: #767676;
+}
+
+#battery.charging {
+  color: #ffffff;
+}
+
+#battery.warning {
+  color: #ffffff;
+  font-weight: bold;
+}
+
+#battery.critical {
+  color: #000000;
+  background: #e6e6e6;
+  font-weight: bold;
+}
+
+tooltip {
+  background: #000000;
+  border: 1px solid #e6e6e6;
+}
+
+tooltip label {
+  color: #e6e6e6;
+}

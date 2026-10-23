@@ -12,6 +12,9 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 | Terminal | `kitty/srd-monochrome.conf` | [kitty](https://sw.kovidgoyal.net/kitty/) |
 | Launcher | `hyprtoolkit/hyprtoolkit.conf`, `hyprtoolkit/mono-icons.py` | [hyprlauncher](https://github.com/hyprwm/hyprlauncher) 0.1.6 and other hyprtoolkit 0.6 apps |
 | Files | `yazi/theme.toml` (built by `yazi/make-theme.py` from `yazi/srd-base.toml`) | [yazi](https://yazi-rs.github.io/) 26.9 |
+| Bar | `waybar/style.css` | Waybar |
+| Notifications | `mako/config` | mako |
+| Shell | `fish/srd-monochrome.fish` (colours and prompt) | fish 4 |
 | Window frames | `hyprland/look.lua` | Hyprland 0.56 (Lua config) |
 | Notes | `obsidian/SRD Monochrome/` | Obsidian 1.5+ |
 
@@ -33,6 +36,9 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 ./install.sh kitty                 # terminal theme, adds "include srd-monochrome.conf" to kitty.conf
 ./install.sh launcher              # hyprtoolkit.conf + greyscale icons in ~/.local/share/icons/SRD-Mono
 ./install.sh yazi                  # yazi theme in ~/.config/yazi/theme.toml
+./install.sh waybar                # Waybar style.css (your own additions must be re-added)
+./install.sh mako                  # mako notifications; critical ones in reverse video
+./install.sh fish                  # fish colours and prompt in ~/.config/fish/conf.d/
 ./install.sh obsidian ~/my-vault   # Obsidian theme; then pick it in Settings → Appearance
 ./install.sh all ~/my-vault
 ```
