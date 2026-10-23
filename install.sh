@@ -16,7 +16,7 @@ backup() { if [ -e "$1" ]; then cp -a "$1" "$1.before-srd-$stamp"; echo "backed 
 install_kitty() {
     mkdir -p "$config/kitty"
     backup "$config/kitty/srd-monochrome.conf"
-    cp "$here/kitty/srd-monochrome.conf" "$here/kitty/srd-headquarters.conf" "$config/kitty/"
+    cp "$here/kitty/srd-monochrome.conf" "$config/kitty/"
     if ! grep -qx 'include srd-monochrome.conf' "$config/kitty/kitty.conf" 2>/dev/null; then
         backup "$config/kitty/kitty.conf"
         printf '\ninclude srd-monochrome.conf\n' >> "$config/kitty/kitty.conf"

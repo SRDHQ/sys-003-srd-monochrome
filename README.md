@@ -13,7 +13,6 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 | Launcher | `hyprtoolkit/hyprtoolkit.conf`, `hyprtoolkit/mono-icons.py` | [hyprlauncher](https://github.com/hyprwm/hyprlauncher) 0.1.6 and other hyprtoolkit 0.6 apps |
 | Window frames | `hyprland/look.lua` | Hyprland 0.56 (Lua config) |
 | Notes | `obsidian/SRD Monochrome/` | Obsidian 1.5+ |
-| Older theme | `kitty/srd-headquarters.conf` | teal, amber and bone; kept for reference |
 
 ## Palette
 
