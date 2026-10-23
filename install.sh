@@ -4,7 +4,7 @@
 #
 #   ./install.sh kitty                 kitty theme (adds an include line to kitty.conf)
 #   ./install.sh launcher              hyprtoolkit.conf (hyprlauncher) + greyscale SRD-Mono icons
-#   ./install.sh obsidian <vault>      both Obsidian themes into <vault>/.obsidian/themes/
+#   ./install.sh obsidian <vault>      the Obsidian theme into <vault>/.obsidian/themes/
 #   ./install.sh all <vault>           all of the above
 set -euo pipefail
 here=$(cd "$(dirname "$0")" && pwd)
@@ -37,7 +37,7 @@ install_obsidian() {
     local vault=${1:?usage: ./install.sh obsidian <vault>}
     [ -d "$vault/.obsidian" ] || { echo "$vault is not an Obsidian vault" >&2; exit 1; }
     mkdir -p "$vault/.obsidian/themes"
-    for t in "SRD Monochrome" "SRD Headquarters"; do
+    for t in "SRD Monochrome"; do
         if [ -e "$vault/.obsidian/themes/$t" ]; then
             # Backed up outside themes/ so Obsidian does not list the copy as a theme.
             mkdir -p "$vault/.obsidian/themes-before-srd-$stamp"

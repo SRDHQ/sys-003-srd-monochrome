@@ -1,7 +1,7 @@
 # SYS-003 — SRD Monochrome
 
 The desktop look of SRD (Systems Research & Development): black background, soft white text, a
-short ramp of greys, **no hue**, white frames. It matches the lab's SWITCHBOARD console and its
+short ramp of greys, **no hue**, white square frames. It matches the lab's SWITCHBOARD console and its
 EXCHANGE display, and covers the terminal, the app launcher, window frames and the notes app.
 
 States are told apart by weight, reverse video, frames and symbols, never by colour alone. Every
@@ -13,7 +13,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 | Launcher | `hyprtoolkit/hyprtoolkit.conf`, `hyprtoolkit/mono-icons.py` | [hyprlauncher](https://github.com/hyprwm/hyprlauncher) 0.1.6 and other hyprtoolkit 0.6 apps |
 | Window frames | `hyprland/look.lua` | Hyprland 0.56 (Lua config) |
 | Notes | `obsidian/SRD Monochrome/` | Obsidian 1.5+ |
-| Older theme | `kitty/srd-headquarters.conf`, `obsidian/SRD Headquarters/` | teal, amber and bone; kept for reference |
+| Older theme | `kitty/srd-headquarters.conf` | teal, amber and bone; kept for reference |
 
 ## Palette
 
@@ -32,7 +32,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 ```bash
 ./install.sh kitty                 # terminal theme, adds "include srd-monochrome.conf" to kitty.conf
 ./install.sh launcher              # hyprtoolkit.conf + greyscale icons in ~/.local/share/icons/SRD-Mono
-./install.sh obsidian ~/my-vault   # both Obsidian themes; then pick one in Settings → Appearance
+./install.sh obsidian ~/my-vault   # Obsidian theme; then pick it in Settings → Appearance
 ./install.sh all ~/my-vault
 ```
 

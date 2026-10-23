@@ -11,7 +11,7 @@ hl.config({
         },
     },
     decoration = {
-        rounding       = 10,
+        rounding       = 0,   -- square, like the SWITCHBOARD frames
         rounding_power = 2,
         shadow = { enabled = true, range = 4, render_power = 3, color = 0xee1a1a1a },
     },
