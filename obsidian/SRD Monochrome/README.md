@@ -1,7 +1,7 @@
 # SRD Monochrome — Obsidian theme
 
 The vault's counterpart to the SWITCHBOARD console and EXCHANGE (D-086, D-089) and the
-SRD Monochrome kitty theme (D-090). The SRD Headquarters theme is kept alongside.
+SRD Monochrome kitty theme (D-090).
 
 - Black background, soft white text (`#e6e6e6`), white for emphasis.
 - No hue. States are told apart by weight, reverse video, frames and symbols, as in the console.
