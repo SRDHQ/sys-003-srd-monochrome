@@ -60,6 +60,8 @@ are not installed: copy the keys from `hyprland/look.lua` into your own `hyprlan
   copies the icon rules from the installed yazi binary and turns each colour into a grey of the
   same brightness, between `#767676` and `#e6e6e6`. Run it again after a yazi update, then
   `./install.sh yazi`.
+- To open it from the Hyprland file-manager key, set `local fileManager = "kitty --class yazi -e yazi"`
+  in `hyprland.lua` (the stock config binds it to SUPER+E).
 
 ## Records
 
