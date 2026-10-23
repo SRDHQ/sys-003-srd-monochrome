@@ -8,6 +8,7 @@
 #   ./install.sh waybar                Waybar style.css (replaces it; re-add your own blocks)
 #   ./install.sh mako                  mako notification config
 #   ./install.sh fish                  fish colours and prompt in conf.d/
+#   ./install.sh zed                   Zed theme (pick "SRD Monochrome" in the theme selector)
 #   ./install.sh obsidian <vault>      the Obsidian theme into <vault>/.obsidian/themes/
 #   ./install.sh all <vault>           all of the above
 set -euo pipefail
@@ -70,6 +71,13 @@ install_fish() {
     echo "fish: done (open a new shell)"
 }
 
+install_zed() {
+    mkdir -p "$config/zed/themes"
+    backup "$config/zed/themes/srd-monochrome.json"
+    cp "$here/zed/srd-monochrome.json" "$config/zed/themes/"
+    echo "zed: done (select SRD Monochrome: ctrl+k ctrl+t, or \"theme\" in settings.json)"
+}
+
 install_obsidian() {
     local vault=${1:?usage: ./install.sh obsidian <vault>}
     [ -d "$vault/.obsidian" ] || { echo "$vault is not an Obsidian vault" >&2; exit 1; }
@@ -94,7 +102,8 @@ case ${1:-} in
     waybar) install_waybar ;;
     mako) install_mako ;;
     fish) install_fish ;;
+    zed) install_zed ;;
     obsidian) install_obsidian "${2:-}" ;;
-    all) install_kitty; install_launcher; install_yazi; install_waybar; install_mako; install_fish; install_obsidian "${2:-}" ;;
-    *) sed -n '2,12p' "$0"; exit 2 ;;
+    all) install_kitty; install_launcher; install_yazi; install_waybar; install_mako; install_fish; install_zed; install_obsidian "${2:-}" ;;
+    *) sed -n '2,13p' "$0"; exit 2 ;;
 esac

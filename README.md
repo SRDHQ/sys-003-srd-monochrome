@@ -15,6 +15,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 | Bar | `waybar/style.css` | Waybar |
 | Notifications | `mako/config` | mako |
 | Shell | `fish/srd-monochrome.fish` (colours and prompt) | fish 4 |
+| Editor | `zed/srd-monochrome.json` (all 142 theme keys of schema v0.2.0) | Zed 1.24 |
 | Window frames | `hyprland/look.lua` | Hyprland 0.56 (Lua config) |
 | Notes | `obsidian/SRD Monochrome/` | Obsidian 1.5+ |
 
@@ -39,6 +40,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 ./install.sh waybar                # Waybar style.css (your own additions must be re-added)
 ./install.sh mako                  # mako notifications; critical ones in reverse video
 ./install.sh fish                  # fish colours and prompt in ~/.config/fish/conf.d/
+./install.sh zed                   # Zed theme in ~/.config/zed/themes/; then select it
 ./install.sh obsidian ~/my-vault   # Obsidian theme; then pick it in Settings → Appearance
 ./install.sh all ~/my-vault
 ```
@@ -68,6 +70,13 @@ are not installed: copy the keys from `hyprland/look.lua` into your own `hyprlan
   `./install.sh yazi`.
 - To open it from the Hyprland file-manager key, set `local fileManager = "kitty --class yazi -e yazi"`
   in `hyprland.lua` (the stock config binds it to SUPER+E).
+
+### Zed notes
+
+- Syntax is told apart by weight and grey level: keywords bold white, functions white, strings
+  `#bcbcbc`, comments `#767676` italic, punctuation and operators `#8a8a8a`, types italic.
+- Diagnostics and Git status use grey level instead of red and green: errors and conflicts white,
+  warnings and changes `#bcbcbc`, deletions `#767676`.
 
 ## Records
 
