@@ -1,0 +1,7 @@
+{
+  "name": "SRD Monochrome",
+  "version": "0.1.0",
+  "minAppVersion": "1.5.0",
+  "author": "SRD (Systems Research & Development)",
+  "description": "Black and white to match the SWITCHBOARD console, EXCHANGE LINES and the SRD Monochrome kitty theme: DOS double-line frames, reverse-video selection, greys at 4.5:1 or more."
+}

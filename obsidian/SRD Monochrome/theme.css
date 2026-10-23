@@ -1,0 +1,633 @@
+/*
+SRD Monochrome — Obsidian theme
+Black and white, to match the SWITCHBOARD console, EXCHANGE LINES and the SRD Monochrome kitty
+theme (D-086, D-089, D-090). States are told apart by weight, reverse video, frames and symbols,
+never by hue. Every text grey has at least 4.5:1 contrast on black; control borders at least 3:1.
+*/
+
+.theme-dark {
+  /* SRD monochrome palette (greys shared with kitty/srd-monochrome.conf) */
+  --srd-black: #000000;
+  --srd-panel: #0a0a0a;
+  --srd-panel-2: #141414;
+  --srd-rule: #3a3a3a;      /* decorative lines: inactive kitty border */
+  --srd-edge: #767676;      /* control borders, faint text: 4.62:1 */
+  --srd-muted: #8a8a8a;     /* quiet text: 6.08:1 */
+  --srd-soft: #bcbcbc;      /* secondary text: 11.06:1 */
+  --srd-text: #e6e6e6;      /* body text */
+  --srd-white: #ffffff;     /* emphasis */
+
+  /* Obsidian foundations */
+  --background-primary: var(--srd-black);
+  --background-primary-alt: var(--srd-panel);
+  --background-secondary: var(--srd-black);
+  --background-secondary-alt: var(--srd-panel);
+  --background-modifier-border: var(--srd-rule);
+  --background-modifier-border-hover: var(--srd-edge);
+  --background-modifier-border-focus: var(--srd-white);
+  --background-modifier-hover: rgba(255, 255, 255, 0.07);
+  --background-modifier-active-hover: rgba(255, 255, 255, 0.12);
+  --background-modifier-form-field: var(--srd-black);
+  --background-modifier-form-field-highlighted: var(--srd-panel);
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.6);
+  --background-modifier-cover: rgba(0, 0, 0, 0.88);
+  --background-modifier-error: var(--srd-text);
+  --background-modifier-success: var(--srd-soft);
+
+  --text-normal: var(--srd-text);
+  --text-muted: var(--srd-muted);
+  --text-faint: var(--srd-edge);
+  --text-on-accent: var(--srd-black);
+  --text-on-accent-inverted: var(--srd-black);
+  --text-error: var(--srd-white);
+  --text-success: var(--srd-soft);
+  --text-warning: var(--srd-white);
+  --text-selection: rgba(230, 230, 230, 0.28);
+  --text-highlight-bg: var(--srd-text);
+
+  --interactive-normal: var(--srd-panel);
+  --interactive-hover: var(--srd-panel-2);
+  --interactive-accent: var(--srd-text);
+  --interactive-accent-hover: var(--srd-white);
+  --interactive-success: var(--srd-soft);
+
+  --color-accent: var(--srd-text);
+  --color-accent-1: var(--srd-white);
+  --color-accent-2: var(--srd-white);
+  --accent-h: 0;
+  --accent-s: 0%;
+  --accent-l: 90%;
+
+  /* Callout and semantic colours collapse to greys (RGB triplets as Obsidian expects) */
+  --color-red-rgb: 230, 230, 230;
+  --color-orange-rgb: 230, 230, 230;
+  --color-yellow-rgb: 230, 230, 230;
+  --color-green-rgb: 188, 188, 188;
+  --color-cyan-rgb: 188, 188, 188;
+  --color-blue-rgb: 188, 188, 188;
+  --color-purple-rgb: 188, 188, 188;
+  --color-pink-rgb: 188, 188, 188;
+  --color-red: var(--srd-text);
+  --color-orange: var(--srd-text);
+  --color-yellow: var(--srd-text);
+  --color-green: var(--srd-soft);
+  --color-cyan: var(--srd-soft);
+  --color-blue: var(--srd-soft);
+  --color-purple: var(--srd-soft);
+  --color-pink: var(--srd-soft);
+
+  --text-accent: var(--srd-white);
+  --text-accent-hover: var(--srd-white);
+  --link-color: var(--srd-white);
+  --link-color-hover: var(--srd-white);
+  --link-unresolved-color: var(--srd-soft);
+  --link-unresolved-opacity: 1;
+  --link-unresolved-decoration-style: dotted;
+  --link-external-color: var(--srd-soft);
+  --link-external-color-hover: var(--srd-white);
+  --link-decoration: underline;
+  --link-external-decoration: underline;
+
+  --tag-color: var(--srd-soft);
+  --tag-color-hover: var(--srd-white);
+  --tag-background: transparent;
+  --tag-background-hover: rgba(255, 255, 255, 0.08);
+  --tag-border-color: var(--srd-edge);
+  --tag-border-color-hover: var(--srd-text);
+
+  --blockquote-border-color: var(--srd-edge);
+  --blockquote-color: var(--srd-soft);
+
+  --code-normal: var(--srd-text);
+  --code-background: var(--srd-panel);
+  --code-comment: var(--srd-edge);
+  --code-function: var(--srd-white);
+  --code-important: var(--srd-white);
+  --code-keyword: var(--srd-white);
+  --code-operator: var(--srd-soft);
+  --code-property: var(--srd-soft);
+  --code-punctuation: var(--srd-muted);
+  --code-string: #d0d0d0;
+  --code-tag: var(--srd-white);
+  --code-value: #d8d8d8;
+
+  --h1-color: var(--srd-white);
+  --h2-color: var(--srd-white);
+  --h3-color: var(--srd-text);
+  --h4-color: var(--srd-text);
+  --h5-color: var(--srd-soft);
+  --h6-color: var(--srd-muted);
+
+  --checkbox-color: var(--srd-text);
+  --checkbox-color-hover: var(--srd-white);
+  --checkbox-border-color: var(--srd-edge);
+  --checkbox-border-color-hover: var(--srd-text);
+  --checkbox-marker-color: var(--srd-black);
+  --checklist-done-color: var(--srd-muted);
+
+  --divider-color: var(--srd-rule);
+  --divider-color-hover: var(--srd-edge);
+
+  --icon-color: var(--srd-muted);
+  --icon-color-hover: var(--srd-white);
+  --icon-color-active: var(--srd-white);
+  --icon-color-focused: var(--srd-white);
+  --nav-item-color: var(--srd-soft);
+  --nav-item-color-hover: var(--srd-white);
+  --nav-item-color-active: var(--srd-black);
+  --nav-item-background-hover: rgba(255, 255, 255, 0.07);
+  --nav-item-background-active: var(--srd-text);
+
+  --tab-text-color: var(--srd-muted);
+  --tab-text-color-focused: var(--srd-soft);
+  --tab-text-color-focused-active: var(--srd-black);
+  --tab-text-color-focused-active-current: var(--srd-black);
+  --tab-background-active: var(--srd-text);
+  --tab-outline-color: var(--srd-rule);
+
+  --titlebar-background: var(--srd-black);
+  --titlebar-background-focused: var(--srd-black);
+  --titlebar-text-color: var(--srd-muted);
+  --titlebar-text-color-focused: var(--srd-text);
+
+  --ribbon-background: var(--srd-black);
+  --ribbon-background-collapsed: var(--srd-black);
+  --status-bar-background: var(--srd-black);
+  --status-bar-border-color: var(--srd-rule);
+  --status-bar-text-color: var(--srd-muted);
+
+  --canvas-background: var(--srd-black);
+  --canvas-card-label-color: var(--srd-muted);
+  --canvas-dot-pattern: var(--srd-rule);
+
+  --graph-line: var(--srd-rule);
+  --graph-node: var(--srd-soft);
+  --graph-node-focused: var(--srd-white);
+  --graph-node-tag: var(--srd-muted);
+  --graph-node-attachment: var(--srd-edge);
+  --graph-node-unresolved: var(--srd-edge);
+  --graph-text: var(--srd-text);
+
+  --scrollbar-bg: var(--srd-black);
+  --scrollbar-thumb-bg: var(--srd-rule);
+  --scrollbar-active-thumb-bg: var(--srd-edge);
+
+  /* Square, DOS-panel geometry */
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+  --radius-xl: 0px;
+  --input-radius: 0px;
+  --button-radius: 0px;
+  --tab-radius-active: 0px;
+  --checkbox-radius: 0px;
+  --toggle-radius: 0px;
+  --toggle-thumb-radius: 0px;
+  --callout-radius: 0px;
+  --embed-border-radius: 0px;
+  --modal-radius: 0px;
+
+  --srd-frame: 3px double var(--srd-edge);
+  --srd-frame-bright: 3px double var(--srd-text);
+
+  /* Typography: monospace interface like the console; readable text face for notes */
+  --font-interface-theme: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --font-text-theme: Inter, "Avenir Next", "Segoe UI", sans-serif;
+  --font-monospace-theme: "JetBrains Mono", "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+}
+
+/* ----- Workspace shell ----- */
+
+body {
+  background: var(--srd-black);
+}
+
+.workspace,
+.workspace-split.mod-root,
+.workspace-tabs,
+.workspace-tab-container {
+  background: var(--background-primary);
+}
+
+.workspace-ribbon,
+.side-dock-ribbon {
+  background: var(--srd-black);
+  border-color: var(--srd-rule);
+}
+
+.workspace-leaf-resize-handle:hover,
+.workspace-split.mod-vertical > * > .workspace-leaf-resize-handle:hover {
+  background: var(--srd-text);
+  opacity: 0.6;
+}
+
+/* ----- Tabs: slim title bar, current tab in reverse video (EXCHANGE titlebar) ----- */
+
+.workspace-tab-header-container {
+  background: var(--srd-black);
+  border-bottom: var(--srd-frame);
+}
+
+.workspace-tab-header {
+  border-radius: 0;
+}
+
+.workspace-tab-header-inner-title {
+  font-family: var(--font-interface-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.85em;
+}
+
+.workspace-tab-header.is-active {
+  background: var(--srd-text);
+  box-shadow: none;
+}
+
+.workspace-tab-header.is-active .workspace-tab-header-inner-title,
+.workspace-tab-header.is-active .workspace-tab-header-inner-icon,
+.workspace-tab-header.is-active .workspace-tab-header-inner-close-button {
+  color: var(--srd-black);
+}
+
+.workspace-tab-header.is-active::before,
+.workspace-tab-header.is-active::after {
+  display: none;
+}
+
+/* ----- File explorer: selection in reverse video, hover marked with a bar ----- */
+
+.nav-file-title,
+.nav-folder-title {
+  border-radius: 0;
+  border-left: 2px solid transparent;
+}
+
+.nav-file-title:hover,
+.nav-folder-title:hover {
+  border-left-color: var(--srd-text);
+}
+
+.nav-file-title.is-active,
+.tree-item-self.is-active {
+  background: var(--srd-text);
+  color: var(--srd-black);
+  border-left-color: var(--srd-white);
+}
+
+.nav-folder-title-content {
+  letter-spacing: 0.02em;
+}
+
+/* ----- Editor / reading ----- */
+
+.markdown-source-view.mod-cm6 .cm-scroller,
+.markdown-reading-view {
+  background: var(--srd-black);
+}
+
+.markdown-source-view.mod-cm6 .cm-active.cm-line {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.cm-cursor,
+.cm-dropCursor {
+  border-left-color: var(--srd-white) !important;
+}
+
+.markdown-source-view.mod-cm6 .cm-selectionBackground {
+  background: rgba(230, 230, 230, 0.28) !important;
+}
+
+::selection {
+  background: var(--srd-text) !important;
+  color: var(--srd-black) !important;
+}
+
+/* Headings: framed labels in the console style */
+.markdown-rendered h1,
+.markdown-source-view .HyperMD-header-1 {
+  font-family: var(--font-monospace-theme);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-bottom: var(--srd-frame);
+  padding-bottom: 0.22em;
+}
+
+.markdown-rendered h2,
+.markdown-source-view .HyperMD-header-2 {
+  font-family: var(--font-monospace-theme);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--srd-rule);
+  padding-bottom: 0.15em;
+}
+
+.markdown-rendered h3,
+.markdown-source-view .HyperMD-header-3 {
+  letter-spacing: 0.02em;
+}
+
+/* Links: underline carries the meaning colour can't */
+.markdown-rendered .internal-link,
+.markdown-rendered .external-link,
+.cm-hmd-internal-link .cm-underline {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.markdown-rendered .internal-link.is-unresolved {
+  text-decoration-style: dotted;
+}
+
+.markdown-rendered mark,
+.cm-s-obsidian span.cm-highlight {
+  background: var(--srd-text);
+  color: var(--srd-black);
+}
+
+/* ----- Code ----- */
+
+.markdown-rendered pre,
+.cm-s-obsidian div.HyperMD-codeblock-bg {
+  background: var(--srd-panel);
+  border: var(--srd-frame);
+  border-radius: 0;
+}
+
+.markdown-rendered code:not(pre code) {
+  background: var(--srd-panel-2);
+  color: var(--srd-white);
+  border: 1px solid var(--srd-rule);
+  border-radius: 0;
+  padding: 0.1em 0.32em;
+}
+
+/* ----- Quotes ----- */
+
+.markdown-rendered blockquote {
+  background: transparent;
+  border-inline-start: 2px solid var(--srd-edge);
+  color: var(--srd-soft);
+}
+
+/* ----- Tags ----- */
+
+.tag,
+.cm-hashtag {
+  border: 1px solid var(--srd-edge);
+  border-radius: 0;
+  font-family: var(--font-monospace-theme);
+  font-size: 0.82em;
+  letter-spacing: 0.03em;
+}
+
+/* ----- Callouts: DOS double frame, title as a reverse-video strip ----- */
+
+.callout {
+  --callout-color: 230, 230, 230;
+  border-radius: 0;
+  border: var(--srd-frame);
+  background: var(--srd-black);
+  box-shadow: none;
+  mix-blend-mode: normal;
+}
+
+.callout-title {
+  font-family: var(--font-monospace-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.82em;
+  color: var(--srd-text);
+}
+
+.callout-icon,
+.callout-fold {
+  color: var(--srd-text);
+}
+
+/* Warnings and errors stand out by a brighter frame and a reverse title, not by hue */
+.callout[data-callout="warning"],
+.callout[data-callout="caution"],
+.callout[data-callout="attention"],
+.callout[data-callout="danger"],
+.callout[data-callout="error"],
+.callout[data-callout="bug"],
+.callout[data-callout="failure"],
+.callout[data-callout="fail"],
+.callout[data-callout="missing"] {
+  border: var(--srd-frame-bright);
+}
+
+.callout[data-callout="warning"] > .callout-title,
+.callout[data-callout="caution"] > .callout-title,
+.callout[data-callout="attention"] > .callout-title,
+.callout[data-callout="danger"] > .callout-title,
+.callout[data-callout="error"] > .callout-title,
+.callout[data-callout="bug"] > .callout-title,
+.callout[data-callout="failure"] > .callout-title,
+.callout[data-callout="fail"] > .callout-title,
+.callout[data-callout="missing"] > .callout-title {
+  background: var(--srd-text);
+  margin: -0.2em -0.4em 0.4em;
+  padding: 0.2em 0.4em;
+}
+
+.callout[data-callout="warning"] > .callout-title *,
+.callout[data-callout="caution"] > .callout-title *,
+.callout[data-callout="attention"] > .callout-title *,
+.callout[data-callout="danger"] > .callout-title *,
+.callout[data-callout="error"] > .callout-title *,
+.callout[data-callout="bug"] > .callout-title *,
+.callout[data-callout="failure"] > .callout-title *,
+.callout[data-callout="fail"] > .callout-title *,
+.callout[data-callout="missing"] > .callout-title * {
+  color: var(--srd-black);
+}
+
+/* ----- Tables: framed, header row in reverse video ----- */
+
+.markdown-rendered table {
+  border-collapse: collapse;
+  border: var(--srd-frame);
+}
+
+.markdown-rendered th {
+  background: var(--srd-text);
+  color: var(--srd-black);
+  font-family: var(--font-monospace-theme);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.markdown-rendered td,
+.markdown-rendered th {
+  border-color: var(--srd-rule);
+}
+
+/* ----- Checkboxes: empty box, checked in reverse video ----- */
+
+input[type="checkbox"] {
+  border-radius: 0;
+  border-color: var(--srd-edge);
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--srd-text);
+  border-color: var(--srd-white);
+}
+
+/* ----- Buttons, inputs, menus, modals ----- */
+
+button,
+.dropdown,
+input,
+textarea,
+select {
+  border-radius: 0 !important;
+}
+
+button.mod-cta {
+  background: var(--srd-text);
+  color: var(--srd-black);
+  font-weight: 600;
+}
+
+button.mod-cta:hover {
+  background: var(--srd-white);
+}
+
+button.mod-warning {
+  background: var(--srd-black);
+  color: var(--srd-white);
+  border: var(--srd-frame-bright);
+}
+
+input:focus,
+textarea:focus,
+select:focus,
+button:focus-visible {
+  outline: 1px solid var(--srd-white);
+  outline-offset: 1px;
+}
+
+.menu,
+.suggestion-container,
+.modal,
+.prompt,
+.popover.hover-popover {
+  background: var(--srd-black);
+  border: var(--srd-frame-bright);
+  border-radius: 0;
+  box-shadow: 0 12px 42px rgba(0, 0, 0, 0.6);
+}
+
+.menu-item.selected,
+.suggestion-item.is-selected {
+  background: var(--srd-text);
+  color: var(--srd-black);
+}
+
+.menu-item.selected .menu-item-icon,
+.suggestion-item.is-selected .suggestion-flair,
+.suggestion-item.is-selected .suggestion-note {
+  color: var(--srd-black);
+}
+
+.checkbox-container.is-enabled {
+  background: var(--srd-text);
+}
+
+.checkbox-container.is-enabled::after {
+  background: var(--srd-black);
+}
+
+/* ----- Status bar ----- */
+
+.status-bar {
+  background: var(--srd-black);
+  border: none;
+  border-top: var(--srd-frame);
+  color: var(--srd-muted);
+  font-family: var(--font-monospace-theme);
+  font-size: 0.72em;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ----- Scrollbars ----- */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--srd-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--srd-rule);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--srd-edge);
+}
+
+/* ----- Graph ----- */
+
+.graph-view.color-fill {
+  color: var(--srd-soft);
+}
+
+.graph-view.color-fill-highlight {
+  color: var(--srd-white);
+}
+
+.graph-view.color-line {
+  color: var(--srd-rule);
+}
+
+/* ----- Embedded files ----- */
+
+.markdown-embed,
+.file-embed {
+  border: var(--srd-frame);
+  border-radius: 0;
+  background: var(--srd-black);
+}
+
+/* ----- Properties ----- */
+
+.metadata-container {
+  background: var(--srd-black);
+  border: var(--srd-frame);
+  border-radius: 0;
+  padding: 0.6em;
+}
+
+.metadata-property-key {
+  font-family: var(--font-monospace-theme);
+  color: var(--srd-muted);
+}
+
+/* ----- Search ----- */
+
+.search-result-file-matched-text {
+  color: var(--srd-black);
+  background: var(--srd-text);
+  border-radius: 0;
+}
+
+/* ----- Reduced motion ----- */
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
