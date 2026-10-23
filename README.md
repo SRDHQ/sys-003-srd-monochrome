@@ -11,6 +11,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 | --- | --- | --- |
 | Terminal | `kitty/srd-monochrome.conf` | [kitty](https://sw.kovidgoyal.net/kitty/) |
 | Launcher | `hyprtoolkit/hyprtoolkit.conf`, `hyprtoolkit/mono-icons.py` | [hyprlauncher](https://github.com/hyprwm/hyprlauncher) 0.1.6 and other hyprtoolkit 0.6 apps |
+| Files | `yazi/theme.toml` (built by `yazi/make-theme.py` from `yazi/srd-base.toml`) | [yazi](https://yazi-rs.github.io/) 26.9 |
 | Window frames | `hyprland/look.lua` | Hyprland 0.56 (Lua config) |
 | Notes | `obsidian/SRD Monochrome/` | Obsidian 1.5+ |
 
@@ -31,6 +32,7 @@ text grey has at least 4.5:1 contrast on black (WCAG 1.4.3, measured with the WC
 ```bash
 ./install.sh kitty                 # terminal theme, adds "include srd-monochrome.conf" to kitty.conf
 ./install.sh launcher              # hyprtoolkit.conf + greyscale icons in ~/.local/share/icons/SRD-Mono
+./install.sh yazi                  # yazi theme in ~/.config/yazi/theme.toml
 ./install.sh obsidian ~/my-vault   # Obsidian theme; then pick it in Settings → Appearance
 ./install.sh all ~/my-vault
 ```
@@ -49,6 +51,15 @@ are not installed: copy the keys from `hyprland/look.lua` into your own `hyprlan
   The generated icons are not in this repository because they contain other projects' artwork.
 - hyprlauncher keeps running in the background and reads the theme only at start; the installer
   stops it so the next launch picks up the theme.
+
+### yazi notes
+
+- Frames use the double vertical line `║`, the hovered file and dialogs' choices are in reverse
+  video, and directories are bold white; file kinds differ by grey level and italics.
+- yazi colours its icons with fixed hex values that ignore the terminal palette. `make-theme.py`
+  copies the icon rules from the installed yazi binary and turns each colour into a grey of the
+  same brightness, between `#767676` and `#e6e6e6`. Run it again after a yazi update, then
+  `./install.sh yazi`.
 
 ## Records
 

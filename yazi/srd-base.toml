@@ -1,0 +1,135 @@
+# SRD Monochrome — yazi styles (hand-written part of theme.toml)
+# Black, #e6e6e6 text, the kitty greys, white frames, no hue. States differ by weight,
+# reverse video and grey level, as in the SWITCHBOARD console. make-theme.py appends the
+# greyscale [icon] section and writes theme.toml.
+
+[mgr]
+cwd = { fg = "#ffffff", bold = true }
+
+find_keyword  = { fg = "#ffffff", bold = true, underline = true }
+find_position = { fg = "#bcbcbc", italic = true }
+
+symlink_target = { fg = "#8a8a8a", italic = true }
+
+marker_copied   = { fg = "#bcbcbc", bg = "#bcbcbc" }
+marker_cut      = { fg = "#767676", bg = "#767676" }
+marker_marked   = { fg = "#e6e6e6", bg = "#e6e6e6" }
+marker_selected = { fg = "#ffffff", bg = "#ffffff" }
+marker_symbol   = "│"
+
+count_copied   = { fg = "#000000", bg = "#bcbcbc" }
+count_cut      = { fg = "#000000", bg = "#767676" }
+count_selected = { fg = "#000000", bg = "#ffffff" }
+
+border_symbol = "║"
+border_style  = { fg = "#e6e6e6" }
+
+[tabs]
+active   = { fg = "#000000", bg = "#e6e6e6", bold = true }
+inactive = { fg = "#8a8a8a", bg = "#000000" }
+sep_inner = { open = "", close = "" }
+sep_outer = { open = "", close = "" }
+
+[mode]
+normal_main = { fg = "#000000", bg = "#e6e6e6", bold = true }
+normal_alt  = { fg = "#e6e6e6", bg = "#3a3a3a" }
+select_main = { fg = "#000000", bg = "#ffffff", bold = true }
+select_alt  = { fg = "#ffffff", bg = "#3a3a3a" }
+unset_main  = { fg = "#000000", bg = "#8a8a8a", bold = true }
+unset_alt   = { fg = "#8a8a8a", bg = "#3a3a3a" }
+
+[indicator]
+parent  = { reversed = true }
+current = { reversed = true }
+preview = { underline = true }
+padding = { open = "", close = "" }
+
+[status]
+overall   = {}
+sep_left  = { open = "", close = "" }
+sep_right = { open = "", close = "" }
+perm_sep   = { fg = "#767676" }
+perm_type  = { fg = "#e6e6e6" }
+perm_read  = { fg = "#bcbcbc" }
+perm_write = { fg = "#ffffff", bold = true }
+perm_exec  = { fg = "#e6e6e6", underline = true }
+progress_label  = { bold = true }
+progress_normal = { fg = "#e6e6e6", bg = "#3a3a3a" }
+progress_error  = { fg = "#000000", bg = "#ffffff" }
+
+[which]
+border          = { fg = "#ffffff" }
+cols            = 3
+mask            = {}
+cand            = { fg = "#ffffff", bold = true }
+rest            = { fg = "#767676" }
+desc            = { fg = "#bcbcbc" }
+separator       = "  "
+separator_style = { fg = "#767676" }
+
+[confirm]
+border     = { fg = "#ffffff" }
+title      = { fg = "#ffffff", bold = true }
+body       = {}
+list       = {}
+btn_yes    = { reversed = true }
+btn_no     = {}
+btn_labels = [ "  [Y]es  ", "  (N)o  " ]
+
+[spot]
+border   = { fg = "#ffffff" }
+title    = { fg = "#ffffff", bold = true }
+tbl_col  = { fg = "#bcbcbc" }
+tbl_cell = { reversed = true }
+
+[notify]
+title_info  = { fg = "#e6e6e6", bold = true }
+title_warn  = { fg = "#ffffff", bold = true, underline = true }
+title_error = { reversed = true, bold = true }
+icon_info  = ""
+icon_warn  = ""
+icon_error = ""
+
+[pick]
+border   = { fg = "#ffffff" }
+active   = { reversed = true, bold = true }
+inactive = {}
+
+[input]
+border   = { fg = "#ffffff" }
+title    = { bold = true }
+value    = {}
+selected = { reversed = true }
+
+[cmp]
+border   = { fg = "#ffffff" }
+active   = { reversed = true }
+inactive = {}
+icon_file    = ""
+icon_folder  = ""
+icon_command = ""
+
+[tasks]
+border  = { fg = "#ffffff" }
+title   = { bold = true }
+hovered = { reversed = true }
+
+[help]
+border  = { fg = "#ffffff" }
+chord   = { fg = "#ffffff", bold = true }
+action  = {}
+hovered = { reversed = true, bold = true }
+
+[filetype]
+rules = [
+	{ mime = "**/image/*", fg = "#bcbcbc" },
+	{ mime = "**/{audio,video}/*", fg = "#bcbcbc", italic = true },
+	{ mime = "**/application/{zip,rar,7z*,tar,gzip,xz,zstd,bzip*,lzma,compress,archive,cpio,arj,xar,ms-cab*}", fg = "#8a8a8a" },
+	{ mime = "**/application/{pdf,doc,rtf}", fg = "#e6e6e6" },
+	{ mime = "vfs/{absent,stale}", fg = "#767676" },
+	{ url = "*", is = "orphan", fg = "#000000", bg = "#8a8a8a" },
+	{ url = "*", is = "exec", fg = "#e6e6e6", underline = true },
+	{ url = "*", is = "dummy", fg = "#000000", bg = "#8a8a8a" },
+	{ url = "*/", is = "dummy", fg = "#000000", bg = "#8a8a8a" },
+	{ url = "*/", fg = "#ffffff", bold = true },
+]

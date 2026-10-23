@@ -4,6 +4,7 @@
 #
 #   ./install.sh kitty                 kitty theme (adds an include line to kitty.conf)
 #   ./install.sh launcher              hyprtoolkit.conf (hyprlauncher) + greyscale SRD-Mono icons
+#   ./install.sh yazi                  yazi file manager theme (theme.toml)
 #   ./install.sh obsidian <vault>      the Obsidian theme into <vault>/.obsidian/themes/
 #   ./install.sh all <vault>           all of the above
 set -euo pipefail
@@ -33,6 +34,13 @@ install_launcher() {
     echo "launcher: done (the next launch reads the theme)"
 }
 
+install_yazi() {
+    mkdir -p "$config/yazi"
+    backup "$config/yazi/theme.toml"
+    cp "$here/yazi/theme.toml" "$config/yazi/theme.toml"
+    echo "yazi: done (restart yazi)"
+}
+
 install_obsidian() {
     local vault=${1:?usage: ./install.sh obsidian <vault>}
     [ -d "$vault/.obsidian" ] || { echo "$vault is not an Obsidian vault" >&2; exit 1; }
@@ -53,7 +61,8 @@ install_obsidian() {
 case ${1:-} in
     kitty) install_kitty ;;
     launcher) install_launcher ;;
+    yazi) install_yazi ;;
     obsidian) install_obsidian "${2:-}" ;;
-    all) install_kitty; install_launcher; install_obsidian "${2:-}" ;;
-    *) sed -n '2,8p' "$0"; exit 2 ;;
+    all) install_kitty; install_launcher; install_yazi; install_obsidian "${2:-}" ;;
+    *) sed -n '2,9p' "$0"; exit 2 ;;
 esac
